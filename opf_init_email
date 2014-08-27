@@ -1,5 +1,5 @@
 #!bin/bash
- 
+ opf_init
  openproject config:set EMAIL_DELIVERY_METHOD=$EMAIL_DELIVERY_METHOD \
  openproject config:set SMTP_ADDRESS=$SMTP_ADDRESS \
  openproject config:set SMTP_PORT=$SMTP_PORT \
@@ -8,4 +8,3 @@
  openproject config:set SMTP_USER_NAME=$SMTP_USER_NAME \
  openproject config:set SMTP_PASSWORD=$SMTP_PASSWORD \
  openproject config:set SMTP_ENABLE_STARTTLS_AUTO=$SMTP_ENABLE_STARTTLS_AUTO \
- opf_init
