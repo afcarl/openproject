@@ -25,14 +25,14 @@ Create DB in External Database Server
     $ docker run --rm \
         --env=["DB_URL" "mysql2://user:pass@host:port/dbname"] \
         --env=["SECRET" "my_token"] \ 
-        dockerimages/openproject:stable \
-        opf_cdb
+    dockerimages/openproject:stable \
+    opf_cdb
     
 # Start Server
 
     $ OPENPROJECT_WORKER=$(docker run -d \
-    --env=["DB_URL" "mysql2://user:pass@host:port/dbname"] \
-    --env=["SECRET" "my_token"] \ 
+        --env=["DB_URL" "mysql2://user:pass@host:port/dbname"] \
+        --env=["SECRET" "my_token"] \ 
     dockerimages/openproject:stable)
 
 
