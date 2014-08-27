@@ -8,20 +8,21 @@ FROM dockerimages/ubuntu-core:14.04
 
 ENV SECRET my_token
 ENV DB_URL mysql2://user:pass@host:port/dbname
+ENV EMAIL_DELIVERY_METHOD="smtp" \
+ENV SMTP_ADDRESS="smtp.example.net" \
+ENV SMTP_PORT="587" \
+ENV SMTP_DOMAIN="example.net" \
+ENV SMTP_AUTHENTICAITON="plain" \
+ENV SMTP_USER_NAME="user" \
+ENV SMTP_PASSWORD="password" \
+ENV SMTP_ENABLE_STARTTLS_AUTO="true" \
 RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list
  && apt-get update
- && apt-get install sudo openproject*=3.0.1-1400061402.f476e5c.trusty \
- && openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
- && openproject config:set SMTP_ADDRESS="smtp.example.net" \
- && openproject config:set SMTP_PORT="587" \
- && openproject config:set SMTP_DOMAIN="example.net" \
- && openproject config:set SMTP_AUTHENTICAITON="plain" \
- && openproject config:set SMTP_USER_NAME="user" \
- && openproject config:set SMTP_PASSWORD="password" \
- && openproject config:set SMTP_ENABLE_STARTTLS_AUTO="true" \
+ && apt-get install -y sudo openproject*=3.0.1-1400061402.f476e5c.trusty \
  && openproject scale web=1 worker=1
 COPY ./inst_db /usr/bin/opf_cdb
-COPY ./opf_init /opf_init /usr/bin/opf_init
-RUN chmod +x /usr/bin/opf_init /usr/bin/opf_cdb
-CMD ["opf_init"]
+COPY ./opf_init /usr/bin/opf_init
+COPY ./opf_init_mail /usr/bin/opf_init_mail
+RUN chmod +x /usr/bin/opf_init_mail /usr/bin/opf_init /usr/bin/opf_cdb
+CMD ["opf_init_mail"]
