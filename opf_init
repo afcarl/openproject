@@ -1,4 +1,4 @@
 #!/bin/bash
 openproject config:set DATABASE_URL=$DB_URL \
 openproject config:set SECRET_TOKEN=$SECRET \
-service openproject start && openproject scale web=1 worker=1
+service openproject start && openproject scale $SCALE
