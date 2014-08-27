@@ -2,4 +2,4 @@
 ## Generating Secret token on First container run
 openproject config:set DATABASE_URL=$DB_URL \
 openproject config:set SECRET_TOKEN=$SECRET \
-service openproject start
+service openproject start && openproject scale web=1 worker=1
