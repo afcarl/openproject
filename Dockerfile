@@ -20,5 +20,8 @@ RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && openproject config:set SMTP_USER_NAME="user" \
  && openproject config:set SMTP_PASSWORD="password" \
  && openproject config:set SMTP_ENABLE_STARTTLS_AUTO="true" \
- && openproject scale web=1 worker=1 
-CMD ["opf_init"]
+ && openproject scale web=1 worker=1
+COPY ./inst_db /usr/bin/opf_cdb
+COPY ./opf_init /opf_init /usr/bin/opf_cdb
+RUN chmod +x /opf_init 
+CMD ["/opf_init"]
