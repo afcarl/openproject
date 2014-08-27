@@ -15,9 +15,9 @@ And Simply fill in your Credentials and Settings you don't need to reconfigure a
 
     docker build -t dockerimages/openproject:configed - <<DOCKERFILE
      FROM dockerimages/openprojects
-     ENV DATABASE_URL "mysql2://user:pass@host:port/dbname" \
+     ENV DATABASE_URL "mysql2://user:pass@host:port/dbname"
      ENV SECRET_TOKEN "my_token"
-     && openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
+     RUN openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
      && openproject config:set SMTP_ADDRESS="smtp.example.net" \
      && openproject config:set SMTP_PORT="587" \
      && openproject config:set SMTP_DOMAIN="example.net" \
