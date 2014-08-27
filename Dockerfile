@@ -6,12 +6,12 @@
 
 FROM dockerimages/ubuntu-core:14.04
 
+ENV SECRET_TOKEN my_token
+ENV DATABASE_URL mysql2://user:pass@host:port/dbname
 RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list
  && apt-get update
  && apt-get install sudo openproject*=3.0.1-1400061402.f476e5c.trusty \
- && openproject config:set DATABASE_URL=mysql2://user:pass@host:port/dbname \
- && openproject config:set SECRET_TOKEN="my_token" \
  && openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
  && openproject config:set SMTP_ADDRESS="smtp.example.net" \
  && openproject config:set SMTP_PORT="587" \
