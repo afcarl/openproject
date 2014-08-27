@@ -6,24 +6,30 @@ The Image Installs MYSQL Database if it don't already exists or throws Error and
 
 Use Create OWN DB
 
-    # Start Database container with var OPENPROJECT_DB
+# Start Database container with var OPENPROJECT_DB
+
     OPENPROJECT_DB=$(docker run -d tutum/mysql)
     
-    # This Will Install Database First Time
-    docker run --link=${OPENPROJECT_DB} dockerimages/openproject:stable opf_cdb
+# This Will Install Database First Time
 
-    # Start Server
+    docker run --rm --link=${OPENPROJECT_DB} dockerimages/openproject:stable opf_cdb
+
+# Start Server
+
     OPENPROJECT_WORKER=$(docker run -d --link=${OPENPROJECT_DB} dockerimages/openproject:stable)
 
 Create DB in External Database Server
 
-    # Prepare DB
-    OPENPROJECT_WORKER=$(docker run -d \
+# Prepare DB
+
+    docker run --rm \
         --env=["DB_URL" "mysql2://user:pass@host:port/dbname"] \
         --env=["SECRET" "my_token"] \ 
         dockerimages/openproject:stable \
-        opf_cdb)
-    # Start Server
+        opf_cdb
+    
+# Start Server
+
     OPENPROJECT_WORKER=$(docker run -d \
     --env=["DB_URL" "mysql2://user:pass@host:port/dbname"] \
     --env=["SECRET" "my_token"] \ 
