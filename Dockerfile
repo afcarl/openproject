@@ -72,11 +72,11 @@ RUN apt-get clean
 # Setup OpenProject
 #
 ENV CONFIGURE_OPTS --disable-install-doc
+ENV PATH /home/openproject/.rbenv/bin:$PATH
 ADD ./files/Gemfile.local /Gemfile.local
 ADD ./files/Gemfile.plugins /Gemfile.plugins
-ADD ./files/setup_system.sh /setup_system.sh
-RUN /setup_system.sh
-ENV PATH /home/openproject/.rbenv/bin:$PATH
+ADD ./files/setup_system.sh /usr/bin/setup_system
+RUN chmod +x /usr/bin/setup_system && setup_system.sh
 ADD ./files/passenger-standalone.json /home/openproject/openproject/passenger-standalone.json
 ADD ./files/start_openproject.sh /home/openproject/start_openproject.sh
 ADD ./files/start_openproject_worker.sh /home/openproject/start_openproject_worker.sh
