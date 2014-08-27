@@ -2,10 +2,4 @@
 ## Generating Secret token on First container run
 openproject config:set DATABASE_URL=$DB_URL \
 openproject config:set SECRET_TOKEN=$SECRET \
-# InstallDB TODO: Check if DB Exists if yes do nothing
- 
- # TODO: Check if File exists
- openproject run rake db:migrate
- openproject run rake db:seed 
-
 service openproject start
