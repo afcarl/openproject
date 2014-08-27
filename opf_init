@@ -1,6 +1,7 @@
 #!/bin/bash
 ## Generating Secret token on First container run
-
+openproject config:set DATABASE_URL=$DATABASE_URL \
+openproject config:set SECRET_TOKEN=$SECRET_TOKEN \
 # InstallDB TODO: Check if DB Exists if yes do nothing
  
  # TODO: Check if File exists
