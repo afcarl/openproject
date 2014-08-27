@@ -8,6 +8,7 @@ FROM dockerimages/ubuntu-core:14.04
 
 ENV SECRET my_token
 ENV DB_URL mysql2://user:pass@host:port/dbname
+ENV SCALE "web=1 worker=1"
 ENV EMAIL_DELIVERY_METHOD "smtp" 
 ENV SMTP_ADDRESS "smtp.example.net" 
 ENV SMTP_PORT "587" 
