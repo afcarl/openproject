@@ -2,6 +2,8 @@
 # - setup will install database and configure it
 # - use (default) will use linked in DB and Start
 # - TODO: Add a :db tag to discover databases.
+# Create token sudo openproject run rake secret | tail -1
+
 FROM dockerimages/ubuntu-core:14.04
 
 RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
@@ -9,6 +11,7 @@ RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && apt-get update
  && apt-get install sudo openproject*=3.0.1-1400061402.f476e5c.trusty \
  && openproject config:set DATABASE_URL=mysql2://user:pass@host:port/dbname \
+ && openproject config:set SECRET_TOKEN="my_token" \
  && openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
  && openproject config:set SMTP_ADDRESS="smtp.example.net" \
  && openproject config:set SMTP_PORT="587" \
