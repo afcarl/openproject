@@ -21,8 +21,7 @@ RUN wget -qO - https://deb.packager.io/key | sudo apt-key add -
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list \
  && apt-get update \
- && apt-get install -y openproject*=3.0.1-1400061402.f476e5c.trusty \
- && openproject scale web=1 worker=1
+ && apt-get install -y openproject*=3.0.1-1400061402.f476e5c.trusty
 COPY ./inst_db /usr/bin/opf_cdb
 COPY ./opf_init /usr/bin/opf_init
 COPY ./opf_init_mail /usr/bin/opf_init_mail
