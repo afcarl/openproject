@@ -8,14 +8,14 @@ FROM dockerimages/ubuntu-core:14.04
 
 ENV SECRET my_token
 ENV DB_URL mysql2://user:pass@host:port/dbname
-ENV EMAIL_DELIVERY_METHOD="smtp" 
-ENV SMTP_ADDRESS="smtp.example.net" 
-ENV SMTP_PORT="587" 
-ENV SMTP_DOMAIN="example.net" 
-ENV SMTP_AUTHENTICAITON="plain" 
-ENV SMTP_USER_NAME="user" 
-ENV SMTP_PASSWORD="password" 
-ENV SMTP_ENABLE_STARTTLS_AUTO="true" 
+ENV EMAIL_DELIVERY_METHOD "smtp" 
+ENV SMTP_ADDRESS "smtp.example.net" 
+ENV SMTP_PORT "587" 
+ENV SMTP_DOMAIN "example.net" 
+ENV SMTP_AUTHENTICAITON "plain" 
+ENV SMTP_USER_NAME "user" 
+ENV SMTP_PASSWORD "password" 
+ENV SMTP_ENABLE_STARTTLS_AUTO "true" 
 RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list
  && apt-get update
