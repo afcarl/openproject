@@ -1,0 +1,10 @@
+#!/bin/bash
+## Generating Secret token on First container run
+
+# InstallDB TODO: Check if DB Exists if yes do nothing
+ 
+ # TODO: Check if File exists
+ openproject run rake db:migrate
+ openproject run rake db:seed 
+
+service openproject start
