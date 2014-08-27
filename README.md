@@ -26,13 +26,13 @@ And Simply fill in your Credentials and Settings you don't need to reconfigure a
      FROM dockerimages/openprojects
      ENV DB_URL "mysql2://user:pass@host:port/dbname"
      ENV SECRET "my_token"
-     RUN openproject config:set EMAIL_DELIVERY_METHOD="smtp" \
-     && openproject config:set SMTP_ADDRESS="smtp.example.net" \
-     && openproject config:set SMTP_PORT="587" \
-     && openproject config:set SMTP_DOMAIN="example.net" \
-     && openproject config:set SMTP_AUTHENTICAITON="plain" \
-     && openproject config:set SMTP_USER_NAME="user" \
-     && openproject config:set SMTP_PASSWORD="password" \
-     && openproject config:set SMTP_ENABLE_STARTTLS_AUTO="true" \
-     && openproject scale web=1 worker=1
+     ENV EMAIL_DELIVERY_METHOD="smtp" \
+     ENV SMTP_ADDRESS="smtp.example.net" \
+     ENV SMTP_PORT="587" \
+     ENV SMTP_DOMAIN="example.net" \
+     ENV SMTP_AUTHENTICAITON="plain" \
+     ENV SMTP_USER_NAME="user" \
+     ENV SMTP_PASSWORD="password" \
+     ENV SMTP_ENABLE_STARTTLS_AUTO="true" \
+     CMD ["opf_init_mail"
      DOCKERFILE
