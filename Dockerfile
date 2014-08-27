@@ -16,10 +16,11 @@ ENV SMTP_AUTHENTICAITON "plain"
 ENV SMTP_USER_NAME "user" 
 ENV SMTP_PASSWORD "password" 
 ENV SMTP_ENABLE_STARTTLS_AUTO "true" 
-RUN wget -qO - https://deb.packager.io/key | sudo apt-key add - \
+RUN apt-get update && apt-get install -y wget sudo \
+ && wget -qO - https://deb.packager.io/key | sudo apt-key add - \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list
  && apt-get update
- && apt-get install -y sudo openproject*=3.0.1-1400061402.f476e5c.trusty \
+ && apt-get install -y openproject*=3.0.1-1400061402.f476e5c.trusty \
  && openproject scale web=1 worker=1
 COPY ./inst_db /usr/bin/opf_cdb
 COPY ./opf_init /usr/bin/opf_init
