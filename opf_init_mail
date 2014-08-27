@@ -1,4 +1,5 @@
 #!bin/bash
+ /sbin/init
  opf_init
  openproject config:set EMAIL_DELIVERY_METHOD=$EMAIL_DELIVERY_METHOD \
  openproject config:set SMTP_ADDRESS=$SMTP_ADDRESS \
