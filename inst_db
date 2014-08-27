@@ -1,0 +1,6 @@
+#!/bin/bash
+# InstallDB TODO: Check if DB Exists if yes do nothing
+ 
+ # TODO: Check if File exists
+ openproject run rake db:migrate
+ openproject run rake db:seed
