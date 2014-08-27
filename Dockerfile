@@ -27,7 +27,7 @@ FROM ubuntu:14.04
 MAINTAINER OpenProject Foundation (opf), info@openproject.org
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV OPF_BRANCH stable
+ENV OPF_BRANCH dev
 
 # expose rails server port
 EXPOSE 8080
