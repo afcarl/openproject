@@ -17,9 +17,10 @@ ENV SMTP_AUTHENTICAITON "plain"
 ENV SMTP_USER_NAME "user" 
 ENV SMTP_PASSWORD "password" 
 ENV SMTP_ENABLE_STARTTLS_AUTO "true" 
-RUN apt-get update && apt-get install -y wget sudo apt-transport-https ca-certificates
-RUN wget -qO - https://deb.packager.io/key | sudo apt-key add -
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
+RUN /sbin/init \
+ && apt-get update && apt-get install -y wget sudo apt-transport-https ca-certificates \
+ && wget -qO - https://deb.packager.io/key | sudo apt-key add - \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
  && echo "deb https://deb.packager.io/gh/tessi/openproject trusty feature/pkgr" | sudo tee /etc/apt/sources.list.d/openproject.list \
  && apt-get update \
  && apt-get install -y openproject*=3.0.1-1400061402.f476e5c.trusty
