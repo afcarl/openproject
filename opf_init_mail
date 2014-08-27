@@ -1,5 +1,8 @@
 #!bin/bash
- /sbin/init
+
+ screen -dmSL init /sbin/init
+ #resume later using screen -x workstuff
+ #check the log file less -r ~/screenlog.0/sbin/init
  opf_init
  openproject config:set EMAIL_DELIVERY_METHOD=$EMAIL_DELIVERY_METHOD \
  openproject config:set SMTP_ADDRESS=$SMTP_ADDRESS \
