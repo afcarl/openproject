@@ -4,7 +4,7 @@
 # - TODO: Add a :db tag to discover databases.
 # Create token sudo openproject run rake secret | tail -1
 
-FROM dockerimages/ubuntu-core:14.04
+FROM dockerimages/ubuntu-upstart:14.04
 
 ENV SECRET my_token
 ENV DB_URL mysql2://user:pass@host:port/dbname
