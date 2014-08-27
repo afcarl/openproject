@@ -39,6 +39,7 @@ And Simply fill in your Credentials and Settings you don't need to reconfigure a
      FROM dockerimages/openprojects
      ENV DB_URL "mysql2://user:pass@host:port/dbname"
      ENV SECRET "my_token"
+     ENV SCALE "web=1 worker=1"
      ENV EMAIL_DELIVERY_METHOD="smtp" \
      ENV SMTP_ADDRESS="smtp.example.net" \
      ENV SMTP_PORT="587" \
